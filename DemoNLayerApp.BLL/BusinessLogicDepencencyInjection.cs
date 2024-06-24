@@ -16,6 +16,8 @@ namespace DemoNLayerApp.DAL
         public static void BusinessLogicInjection(this IServiceCollection services)
         {
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<ITokenService, TokenService>();
         }
     }
 }

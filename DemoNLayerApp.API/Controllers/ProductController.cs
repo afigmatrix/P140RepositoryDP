@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 using DemoNLayerApp.BLL.Model;
 using DemoNLayerApp.BLL.Model.DTO;
 using DemoNLayerApp.BLL.Service.Interface;
+using Microsoft.AspNetCore.Authorization;
+using System.Linq;
+using System.Security.Claims;
 
 namespace DemoNLayerApp.API.Controllers
 {
@@ -25,8 +28,10 @@ namespace DemoNLayerApp.API.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles ="Admin")]
         public async Task<IActionResult> GetAll()
         {
+            var userName = User.FindFirstValue(ClaimTypes.Role);
             var responseData =await productService.GetProducts();
             return Ok(responseData);
         }
