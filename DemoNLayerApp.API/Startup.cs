@@ -52,7 +52,7 @@ namespace DemoNLayerApp.API
                       },
                       new string[] { }
                     }
-  });
+                 });
             });
             services.AddAuthentication(options =>
             {
